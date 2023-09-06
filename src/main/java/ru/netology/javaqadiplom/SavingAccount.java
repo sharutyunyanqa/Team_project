@@ -10,19 +10,37 @@ public class SavingAccount extends Account {
     protected int minBalance;
     protected int maxBalance;
 
+
     /**
      * Создаёт новый объект сберегательного счёта с заданными параметрами.
      * Если параметры некорректны (мин. баланс больше максимального и так далее), то
      * должно выкидываться исключения вида IllegalArgumentException.
+     *
      * @param initialBalance - начальный баланс
-     * @param minBalance - минимальный баланс
-     * @param maxBalance - максимальный баланс
-     * @param rate - неотрицательное число, ставка в процентах годовых на остаток
+     * @param minBalance     - минимальный баланс
+     * @param maxBalance     - максимальный баланс
+     * @param rate           - неотрицательное число, ставка в процентах годовых на остаток
      */
     public SavingAccount(int initialBalance, int minBalance, int maxBalance, int rate) {
+
+//        if(minBalance<0){
+//            throw new IllegalArgumentException(
+//                    "Минимальный баланс не может быть отрицательной, а у вас: " + minBalance
+//            );
+//        }
+//        if(initialBalance<minBalance){
+//            throw new IllegalArgumentException(
+//                    "Начальный баланс не может быть меньше минимального баланса, а у вас: " + initialBalance
+//            );
+//        }
+//        if(maxBalance<initialBalance){
+//            throw new IllegalArgumentException(
+//                    "Максимальный баланс не может быть меньше начального баланса, а у вас: " + maxBalance
+//            );
+//        }
         if (rate < 0) {
             throw new IllegalArgumentException(
-              "Накопительная ставка не может быть отрицательной, а у вас: " + rate
+                    "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
         this.balance = initialBalance;
@@ -37,6 +55,7 @@ public class SavingAccount extends Account {
      * на сумму покупки. Если же операция может привести к некорректному
      * состоянию счёта (например, баланс может уйти в минус), то операция должна
      * завершиться вернув false и ничего не поменяв на счёте.
+     *
      * @param amount - сумма покупки
      * @return true если операция прошла успешно, false иначе.
      */
@@ -45,12 +64,16 @@ public class SavingAccount extends Account {
         if (amount <= 0) {
             return false;
         }
+//        if(balance-amount<minBalance){
+//            return false;
+//        }
         balance = balance - amount;
+//        return true;
         if (balance > minBalance) {
             return true;
         } else {
             return false;
-        }
+        }//todo delete this if
     }
 
     /**
@@ -59,9 +82,10 @@ public class SavingAccount extends Account {
      * на сумму покупки. Если же операция может привести к некорректному
      * состоянию счёта, то операция должна
      * завершиться вернув false и ничего не поменяв на счёте.
+     *
      * @param amount - сумма пополнения
-     * @return true если операция прошла успешно, false иначе.
      * @param amount
+     * @return true если операция прошла успешно, false иначе.
      * @return
      */
     @Override
@@ -70,30 +94,39 @@ public class SavingAccount extends Account {
             return false;
         }
         if (balance + amount < maxBalance) {
+//        if (balance + amount <= maxBalance) { balance+=amount;
             balance = amount;
             return true;
-        } else {
-            return false;
         }
-    }
 
-    /**
-     * Операция расчёта процентов на остаток счёта при условии, что
-     * счёт не будет меняться год. Сумма процентов приводится к целому
-     * числу через отбрасывание дробной части (так и работает целочисленное деление).
-     * Пример: если на счёте 200 рублей, то при ставке 15% ответ должен быть 30.
-     * @return
-     */
-    @Override
-    public int yearChange() {
-        return balance / 100 * rate;
-    }
 
-    public int getMinBalance() {
-        return minBalance;
-    }
+        /**
+         * Операция расчёта процентов на остаток счёта при условии, что
+         * счёт не будет меняться год. Сумма процентов приводится к целому
+         * числу через отбрасывание дробной части (так и работает целочисленное деление).
+         * Пример: если на счёте 200 рублей, то при ставке 15% ответ должен быть 30.
+         *
+         * @return
+         */
+        @Override
+        public int yearChange () {
+//        double balanceChange=balance/100*rate;
+//        balance=balanceChange(int);
+//        return balance;
+//            public int yearChange() {
+//                double balanceChange = balance * rate / 100;
+//                int newBalance = (int) balanceChange;
+//                return newBalance;
+//            }
+            return balance / 100 * rate;
+        }
 
-    public int getMaxBalance() {
-        return maxBalance;
+        public int getMinBalance () {
+            return minBalance;
+        }
+
+        public int getMaxBalance () {
+            return maxBalance;
+        }
     }
 }
