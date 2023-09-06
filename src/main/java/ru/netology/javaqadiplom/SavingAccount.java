@@ -10,6 +10,7 @@ public class SavingAccount extends Account {
     protected int minBalance;
     protected int maxBalance;
 
+
     /**
      * Создаёт новый объект сберегательного счёта с заданными параметрами.
      * Если параметры некорректны (мин. баланс больше максимального и так далее), то
@@ -70,7 +71,7 @@ public class SavingAccount extends Account {
             return false;
         }
         if (balance + amount < maxBalance) {
-            balance = amount;
+            balance = amount; // balance = balance + amount
             return true;
         } else {
             return false;
