@@ -22,9 +22,8 @@ public class CreditAccountTest {
     public void shouldTestExceptionsRate() {
         CreditAccount account = new CreditAccount(1000, 500, -5);
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new CreditAccount(1000, 500, -5);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> account.getRate());
 
 
     }
@@ -48,10 +47,9 @@ public class CreditAccountTest {
         CreditAccount account = new CreditAccount(1000, -10, 3);
 
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new CreditAccount(1000, -10, 3);
-        });
-    }// todo не проверяет кридитный лимит на отрицательные значения
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> account.getCreditLimit());
+    }//  не проверяет кридитный лимит на отрицательные значения
 
     @Test
     public void shouldTestCreditLimitPositive() {

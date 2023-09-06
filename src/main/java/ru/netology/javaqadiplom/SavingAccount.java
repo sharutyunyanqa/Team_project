@@ -98,6 +98,10 @@ public class SavingAccount extends Account {
             balance = amount;
             return true;
         }
+        return false;
+    }
+}
+
 
 
         /**
@@ -108,8 +112,8 @@ public class SavingAccount extends Account {
          *
          * @return
          */
-        @Override
-        public int yearChange () {
+        // @Override
+        //public int yearChange () {
 //        double balanceChange=balance/100*rate;
 //        balance=balanceChange(int);
 //        return balance;
@@ -117,16 +121,19 @@ public class SavingAccount extends Account {
 //                double balanceChange = balance * rate / 100;
 //                int newBalance = (int) balanceChange;
 //                return newBalance;
-//            }
-            return balance / 100 * rate;
-        }
 
-        public int getMinBalance () {
-            return minBalance;
-        }
+        //  return balance / 100 * rate;
+        //}
 
-        public int getMaxBalance () {
-            return maxBalance;
-        }
-    }
-}
+
+//        public int getMinBalance () {
+//            return int minBalance;
+//        }
+//
+//        public int getMaxBalance () {
+//            return  int maxBalance;
+//        }
+//    }
+
+
+
