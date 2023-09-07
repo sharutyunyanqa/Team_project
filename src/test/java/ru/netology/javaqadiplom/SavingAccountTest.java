@@ -19,7 +19,6 @@ public class SavingAccountTest {
         Assertions.assertEquals(2_000 + 3_000, account.getBalance());
     }
 
-<<<<<<< HEAD
 
     @Test
     public void shouldTestYearChange() {
@@ -27,7 +26,8 @@ public class SavingAccountTest {
         int expected = 30;
         int actual = account.yearChange();
         Assertions.assertEquals(expected, actual);
-=======
+    }
+
    @Test
     public void shouldAddMoreThanMaxBalance() {
         SavingAccount account = new SavingAccount(
@@ -55,7 +55,7 @@ public class SavingAccountTest {
         account.pay(1_000);
 
         Assertions.assertEquals(2_000 - 1_000, account.getBalance());
->>>>>>> ac77dedc4153df3583c8d4fe20cc06bab6e2cad2
+
     }
 
     @Test
@@ -71,8 +71,6 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(2_000, account.getBalance());
     }
-<<<<<<< HEAD
-=======
 
 
     @Test
@@ -136,7 +134,6 @@ public class SavingAccountTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> account.getRate ()); {
         };
     }
->>>>>>> ac77dedc4153df3583c8d4fe20cc06bab6e2cad2
 }
 
 
