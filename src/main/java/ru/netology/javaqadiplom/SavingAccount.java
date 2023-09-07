@@ -90,11 +90,15 @@ public class SavingAccount extends Account {
             return false;
         }
         if (balance + amount < maxBalance) {
+<<<<<<< HEAD
             if (balance + amount <= maxBalance) {
                 balance += amount;
                 balance= amount;
 
             }
+=======
+            balance = amount; // balance = balance + amount
+>>>>>>> ac77dedc4153df3583c8d4fe20cc06bab6e2cad2
             return true;
 
         }
