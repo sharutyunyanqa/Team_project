@@ -23,21 +23,7 @@ public class SavingAccount extends Account {
      */
     public SavingAccount(int initialBalance, int minBalance, int maxBalance, int rate) {
 
-        if (minBalance < 0) {
-            throw new IllegalArgumentException(
-                    "Минимальный баланс не может быть отрицательной, а у вас: " + minBalance
-            );
-        }
-        if (initialBalance < minBalance) {
-            throw new IllegalArgumentException(
-                    "Начальный баланс не может быть меньше минимального баланса, а у вас: " + initialBalance
-            );
-        }
-        if (maxBalance < initialBalance) {
-            throw new IllegalArgumentException(
-                    "Максимальный баланс не может быть меньше начального баланса, а у вас: " + maxBalance
-            );
-        }
+
         if (rate < 0) {
             throw new IllegalArgumentException(
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
@@ -64,12 +50,15 @@ public class SavingAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        if (balance - amount < minBalance) {
-            return false;
-        }
-        balance = balance - amount;
-        return true;
 
+//        }
+        balance = balance - amount;
+
+        if (balance > minBalance) {
+            return true;
+        } else {
+            return false;
+        }//todo delete this if
     }
 
     /**
@@ -90,48 +79,24 @@ public class SavingAccount extends Account {
             return false;
         }
         if (balance + amount < maxBalance) {
-            if (balance + amount <= maxBalance) {
-                balance += amount;
-                balance = amount;
 
-            }
+            balance = amount;
             return true;
-
         }
         return false;
-    }
-
-
-    /**
-     * Операция расчёта процентов на остаток счёта при условии, что
-     * счёт не будет меняться год. Сумма процентов приводится к целому
-     * числу через отбрасывание дробной части (так и работает целочисленное деление).
-     * Пример: если на счёте 200 рублей, то при ставке 15% ответ должен быть 30.
-     *
-     * @return
-     */
-    @Override
-    //public int yearChange () {
-//        double balanceChange=balance/100*rate;
-//        balance=balanceChange(int);
-//        return balance;
-    public int yearChange() {
-        double balanceChange = balance * rate / 100;
-        int newBalance = (int) balanceChange;
-        return newBalance;
-    }
-
-    public int getMinBalance() {
-        return minBalance;
-    }
-
-    public int getMaxBalance() {
-        return maxBalance;
     }
 }
 
 
 
+/**
+ * Операция расчёта процентов на остаток счёта при условии, что
+ * счёт не будет меняться год. Сумма процентов приводится к целому
+ * числу через отбрасывание дробной части (так и работает целочисленное деление).
+ * Пример: если на счёте 200 рублей, то при ставке 15% ответ должен быть 30.
+ *
+ * @return
+ */
 
 
 
