@@ -70,10 +70,9 @@ public class CreditAccountTest {
         CreditAccount account = new CreditAccount(-100, 500, 3);
 
 
-
-     Assertions.assertThrows(IllegalArgumentException.class, () -> {
-      });
-   }// todo не проверяет баланс на отрецательное значение
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+        });
+    }// todo не проверяет баланс на отрецательное значение
 
 
     @Test
@@ -137,6 +136,7 @@ public class CreditAccountTest {
         boolean actual = account.pay(301);
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldTestPayWrongParam() {
         CreditAccount account = new CreditAccount(100, 200, 10);
