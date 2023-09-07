@@ -76,8 +76,9 @@ public class SavingAccountTest {
 
     @Test
     public void shouldTestExceptionsForSavingAccount() {
-        SavingAccount account = new SavingAccount(500, -100, 1000, 3);
+        SavingAccount account = new SavingAccount(500, -100, 10000, 3);
 
-        Assertions.assertEquals(0, account.getMaxBalance());
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+        });
     }
 }
