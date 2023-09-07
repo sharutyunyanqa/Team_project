@@ -33,6 +33,7 @@ public class SavingAccountTest {
         Assertions.assertEquals(7_000, account.getBalance());
     }
 
+
     @Test
     public void reduceBalanceAfterPay() {
         SavingAccount account = new SavingAccount(
@@ -61,6 +62,7 @@ public class SavingAccountTest {
         Assertions.assertEquals(2_000, account.getBalance());
     }
 
+
     @Test
     public void percentBalanceRemaining() {
         SavingAccount account = new SavingAccount(
@@ -75,9 +77,65 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldTestExceptionsForSavingAccount() {
-        SavingAccount account = new SavingAccount(500, -100, 1000, 3);
+    public void percentBalanceRemainingTwo() {
+        SavingAccount account = new SavingAccount(
+                11_000,
+                1_000,
+                10_000,
+                15
+        );
+        account.yearChange();
 
-        Assertions.assertEquals(0, account.getMaxBalance());
+        Assertions.assertEquals(0, account.yearChange());
+    }
+
+    @Test
+    public void shouldTestExceptionsForSavingAccountMinBalance() {
+        SavingAccount account = new SavingAccount(500, -100, 10000, 3);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> account.getMinBalance());
+        {
+        }
+        ;
+    }
+
+    @Test
+    public void shouldTestExceptionsForSavingAccountMaxBalance() {
+        SavingAccount account = new SavingAccount(1000, 1000, 100, 3);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> account.getMaxBalance());
+        {
+        }
+        ;
+    }
+
+    @Test
+    public void shouldTestExceptionsForSavingAccountInitialBalanceLessMin() {
+        SavingAccount account = new SavingAccount(500, 1000, 11000, 3);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> account.getBalance());
+        {
+        }
+        ;
+    }
+
+    @Test
+    public void shouldTestExceptionsForSavingAccountInitialBalanceMoreMax() {
+        SavingAccount account = new SavingAccount(50000, 1000, 11000, 3);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> account.getBalance());
+        {
+        }
+        ;
+    }
+
+    @Test
+    public void shouldTestExceptionsForSavingAccountRate() {
+        SavingAccount account = new SavingAccount(1500, 1000, 11000, -1);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> account.getRate());
+        {
+        }
+        ;
     }
 }
