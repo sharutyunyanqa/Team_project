@@ -19,13 +19,13 @@ public class SavingAccountTest {
         Assertions.assertEquals(2_000 + 3_000, account.getBalance());
     }
 
-    //    @Test
-//    public void shouldTestYearChange(){
-//        SavingAccount account= new SavingAccount(200,100,1000,15);
-//        int expected= 30;
-//        int actual= account.yearChange();
-//        Assertions.assertEquals(expected,actual);
-//    }
+        @Test
+    public void shouldTestYearChange(){
+        SavingAccount account= new SavingAccount(200,100,1000,15);
+        int expected= 30;
+        int actual= account.yearChange();
+        Assertions.assertEquals(expected,actual);
+    }
     @Test
     public void reduceBalanceAfterPayMoreBalance() {
         SavingAccount account = new SavingAccount(
