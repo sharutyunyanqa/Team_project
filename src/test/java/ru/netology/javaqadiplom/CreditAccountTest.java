@@ -164,7 +164,7 @@ public class CreditAccountTest {
         account.add(200);
         int expected = 300;
         int actual = account.getBalance();
-        Assertions.assertEquals(expected, actual);//todo Неправильный подсчет добавления на счет(не добавляет а заменяет на бакланс)
+        Assertions.assertEquals(expected, actual);// Неправильный подсчет добавления на счет(не добавляет а заменяет на бакланс)
     }
 
     @Test
@@ -190,7 +190,7 @@ public class CreditAccountTest {
         CreditAccount account = new CreditAccount(100, 200, 10);
         int expected = 0;
         int actual = account.yearChange();
-        Assertions.assertEquals(expected, actual);// todo Непрвельный подсчет кредитной ставки/долга/процента при положительном балансе
+        Assertions.assertEquals(expected, actual);// Непрвельный подсчет кредитной ставки/долга/процента при положительном балансе
 
 
     }
@@ -209,10 +209,9 @@ public class CreditAccountTest {
     public void shouldTestYearChangeNegative() {
         CreditAccount account = new CreditAccount(0, 200, 10);
         account.pay(100);
-        int expected = 10;
+        int expected = -10;
         int actual = account.yearChange();
-        Assertions.assertEquals(expected, actual);// todo неправельный подсчет процента, когда остаток на счету отрицательный
-
+        Assertions.assertEquals(expected, actual);
 
     }
 

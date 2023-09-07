@@ -23,6 +23,19 @@ public class CreditAccount extends Account {
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
+
+//        if (creditLimit <= 0) {
+//            throw new IllegalArgumentException(
+//                    "Кредитный лимит не может быть отрицательным, а у вас: " + creditLimit);
+//        }
+//        if (initialBalance <= 0) {
+//            throw new IllegalArgumentException(
+//                    "Начальный баланс не может быть отрицательным, а у вас: " + initialBalance
+//            );
+//
+//        }
+
+
         this.balance = initialBalance;
         this.creditLimit = creditLimit;
         this.rate = rate;
@@ -51,6 +64,20 @@ public class CreditAccount extends Account {
             return false;
         }
     }
+//    public boolean pay(int amount) {
+//        if (amount <= 0) {
+//            return false;
+//        }
+//
+//        balance = balance - amount;
+
+//        if (balance > creditLimit) {
+//            balance = -amount;
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     /**
      * Операция пополнения карты на указанную сумму.
