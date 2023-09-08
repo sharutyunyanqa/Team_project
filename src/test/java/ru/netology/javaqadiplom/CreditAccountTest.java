@@ -73,7 +73,7 @@ public class CreditAccountTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             CreditAccount account = new CreditAccount(-100, 500, 3);
         });
-    }// todo не проверяет баланс на отрецательное значение
+    }//  не проверяет баланс на отрецательное значение
 
 
     @Test
