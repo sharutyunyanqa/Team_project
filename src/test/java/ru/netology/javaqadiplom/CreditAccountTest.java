@@ -20,13 +20,14 @@ public class CreditAccountTest {
 
     @Test
     public void shouldTestExceptionsRate() {
-        CreditAccount account = new CreditAccount(1000, 500, -5);
-
-        Assertions.assertThrows(IllegalArgumentException.class,
-                () -> account.getRate());
 
 
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            CreditAccount account = new CreditAccount(1000, 500, -5);
+        });
     }
+
+
 
     @Test
     public void shouldTestRatePositive() {
@@ -43,12 +44,12 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void shouldTestExceptionsForCreditLimit() {
-        CreditAccount account = new CreditAccount(1000, -10, 3);
+    public void shouldTestExceptionsForCreditLimitNegative() {
 
 
-        Assertions.assertThrows(IllegalArgumentException.class,
-                () -> account.getCreditLimit());
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            CreditAccount account = new CreditAccount(1000, -10, 3);
+        });
     }//  не проверяет кридитный лимит на отрицательные значения
 
     @Test
@@ -67,12 +68,11 @@ public class CreditAccountTest {
 
     @Test
     public void shouldTestBalanceNegative() {
-        CreditAccount account = new CreditAccount(-100, 500, 3);
 
 
-
-     Assertions.assertThrows(IllegalArgumentException.class, () -> {
-      });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            CreditAccount account = new CreditAccount(-100, 500, 3);
+        });
    }// todo не проверяет баланс на отрецательное значение
 
 

@@ -18,28 +18,31 @@ public class CreditAccount extends Account {
      * @param rate           - неотрицательное число, ставка кредитования для расчёта долга за отрицательный баланс
      */
     public CreditAccount(int initialBalance, int creditLimit, int rate) {
-        if (rate <= 0) {
-            throw new IllegalArgumentException(
+        if (rate <=0) {
+            throw  new IllegalArgumentException(
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
+
+        }
+        if (creditLimit <= 0) {
+            throw new IllegalArgumentException(
+                    "Кредитный лимит должен быть положительным числом, а у вас: " + creditLimit);
         }
 
-//        if (creditLimit <= 0) {
-//            throw new IllegalArgumentException(
-//                    "Кредитный лимит не может быть отрицательным, а у вас: " + creditLimit);
-//        }
-//        if (initialBalance <= 0) {
-//            throw new IllegalArgumentException(
-//                    "Начальный баланс не может быть отрицательным, а у вас: " + initialBalance
-//            );
-//
-//        }
+
+        if (initialBalance <= 0) {
+            throw new IllegalArgumentException(
+                    "Начальный баланс не может быть отрицательным, а у вас: " + initialBalance
+            );
+
+        }
 
 
         this.balance = initialBalance;
         this.creditLimit = creditLimit;
         this.rate = rate;
     }
+
 
     /**
      * Операция оплаты с карты на указанную сумму.
