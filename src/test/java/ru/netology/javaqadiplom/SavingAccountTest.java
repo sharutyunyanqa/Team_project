@@ -19,6 +19,7 @@ public class SavingAccountTest {
         Assertions.assertEquals(8_000, account.getBalance());
     }
 
+
     @Test
     public void shouldAddThanMaxBalance() {
         SavingAccount account = new SavingAccount(
@@ -73,6 +74,7 @@ public class SavingAccountTest {
         account.pay(1_000);
 
         Assertions.assertEquals(2_000 - 1_000, account.getBalance());
+
     }
 
     @Test
@@ -114,6 +116,7 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(8_000, account.getBalance());
     }
+
 
 
     @Test
@@ -190,3 +193,7 @@ public class SavingAccountTest {
         });
     }
 }
+
+
+
+
