@@ -50,7 +50,7 @@ public class CreditAccountTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             CreditAccount account = new CreditAccount(1000, -10, 3);
         });
-    }//  не проверяет кридитный лимит на отрицательные значения
+    }
 
     @Test
     public void shouldTestCreditLimitPositive() {
@@ -73,7 +73,7 @@ public class CreditAccountTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             CreditAccount account = new CreditAccount(-100, 500, 3);
         });
-    }//  не проверяет баланс на отрецательное значение
+    }
 
 
     @Test
@@ -127,7 +127,7 @@ public class CreditAccountTest {
         account.pay(301);
         int expected = 100;
         int actual = account.getBalance();
-        Assertions.assertEquals(expected, actual);//todo вычитает недоспустимую сумму с баланса
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -164,7 +164,7 @@ public class CreditAccountTest {
         account.add(200);
         int expected = 300;
         int actual = account.getBalance();
-        Assertions.assertEquals(expected, actual);// Неправильный подсчет добавления на счет(не добавляет а заменяет на бакланс)
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -190,7 +190,7 @@ public class CreditAccountTest {
         CreditAccount account = new CreditAccount(100, 200, 10);
         int expected = 0;
         int actual = account.yearChange();
-        Assertions.assertEquals(expected, actual);// Непрвельный подсчет кредитной ставки/долга/процента при положительном балансе
+        Assertions.assertEquals(expected, actual);
 
 
     }
@@ -219,10 +219,8 @@ public class CreditAccountTest {
     public void shouldTestYearChangeDouble() {
         CreditAccount account = new CreditAccount(0, 200, 3);
         account.pay(75);
-        int expected = 2;
+        int expected = -2;
         int actual = account.yearChange();
-        Assertions.assertEquals(expected, actual);// неправильно округляется сумма при делении баланса
-
-
+        Assertions.assertEquals(expected, actual);
     }
 }
