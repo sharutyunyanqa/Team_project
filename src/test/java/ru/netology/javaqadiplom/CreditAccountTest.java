@@ -98,7 +98,11 @@ public class CreditAccountTest {
     public void shouldTestPayPositive() {
         CreditAccount account = new CreditAccount(100, 200, 10);
         account.pay(200);
+<<<<<<< HEAD
+        int expected = 100;
+=======
         int expected = -100;
+>>>>>>> 90ee07444e5eb63d835b8eb55d88bc4005babeec
         int actual = account.getBalance();
         Assertions.assertEquals(expected, actual);
     }
@@ -107,7 +111,11 @@ public class CreditAccountTest {
     public void shouldTestPayPositiveLimitMin() {
         CreditAccount account = new CreditAccount(100, 200, 10);
         account.pay(299);
+<<<<<<< HEAD
+        int expected = 100;
+=======
         int expected = -199;
+>>>>>>> 90ee07444e5eb63d835b8eb55d88bc4005babeec
         int actual = account.getBalance();
         Assertions.assertEquals(expected, actual);
     }
@@ -116,7 +124,11 @@ public class CreditAccountTest {
     public void shouldTestPayPositiveLimitZero() {
         CreditAccount account = new CreditAccount(100, 200, 10);
         account.pay(300);
+<<<<<<< HEAD
+        int expected = 100;
+=======
         int expected = -200;
+>>>>>>> 90ee07444e5eb63d835b8eb55d88bc4005babeec
         int actual = account.getBalance();
         Assertions.assertEquals(expected, actual);
     }

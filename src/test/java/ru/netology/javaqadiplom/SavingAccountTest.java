@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 public class SavingAccountTest {
 
     @Test
-    public void shouldAddLessThanMaxBalance() {
+    public void shouldAddThanMoreMaxBalance() {
         SavingAccount account = new SavingAccount(
-                2_000,
+                8_000,
                 1_000,
                 10_000,
                 5
@@ -16,8 +16,10 @@ public class SavingAccountTest {
 
         account.add(3_000);
 
-        Assertions.assertEquals(2_000 + 3_000, account.getBalance());
+        Assertions.assertEquals(8_000, account.getBalance());
     }
+
+
 }
 
 
