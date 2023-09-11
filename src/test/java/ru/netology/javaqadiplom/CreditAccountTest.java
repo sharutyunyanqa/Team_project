@@ -17,7 +17,6 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(3_000, account.getBalance());
     }
-
     @Test
     public void shouldTestExceptionsRate() {
 
@@ -35,7 +34,6 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(10, account.getRate());
     }
-
     @Test
     public void shouldTestRateZero() {
         CreditAccount account = new CreditAccount(1000, 500, 0);

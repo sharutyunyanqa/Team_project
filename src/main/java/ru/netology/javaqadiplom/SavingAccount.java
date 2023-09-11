@@ -25,7 +25,7 @@ public class SavingAccount extends Account {
 
         if (minBalance < 0) {
             throw new IllegalArgumentException(
-                    "Минимальный баланс не может быть отрицательной, а у вас: " + minBalance
+                    "Минимальный баланс не может быть отрицательнымй, а у вас: " + minBalance
             );
         }
         if (initialBalance < minBalance) {
@@ -84,17 +84,14 @@ public class SavingAccount extends Account {
      * @return true если операция прошла успешно, false иначе.
      * @return
      */
+
     @Override
     public boolean add(int amount) {
         if (amount <= 0) {
             return false;
         }
-        if (balance + amount < maxBalance) {
-            if (balance + amount <= maxBalance) {
-                balance += amount;
-
-
-            }
+        if (balance + amount <= maxBalance) {
+            balance += amount;
             return true;
 
         }
@@ -126,9 +123,3 @@ public class SavingAccount extends Account {
         return maxBalance;
     }
 }
-
-
-
-
-
-
