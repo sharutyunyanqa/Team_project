@@ -1,7 +1,10 @@
 package ru.netology.javaqadiplom;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 public class CreditAccountTest {
+
     @Test
     public void shouldAddToPositiveBalance() {
         CreditAccount account = new CreditAccount(
@@ -9,10 +12,12 @@ public class CreditAccountTest {
                 5_000,
                 15
         );
+
         account.add(3_000);
+
         Assertions.assertEquals(3_000, account.getBalance());
     }
-   
+
     @Test
     public void shouldTestExceptionsRate() {
 
@@ -27,14 +32,17 @@ public class CreditAccountTest {
     @Test
     public void shouldTestRatePositive() {
         CreditAccount account = new CreditAccount(1000, 500, 10);
+
         Assertions.assertEquals(10, account.getRate());
     }
-   
+
     @Test
     public void shouldTestRateZero() {
         CreditAccount account = new CreditAccount(1000, 500, 0);
+
         Assertions.assertEquals(0, account.getRate());
     }
+
     @Test
     public void shouldTestExceptionsForCreditLimitNegative() {
 
@@ -42,17 +50,22 @@ public class CreditAccountTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             CreditAccount account = new CreditAccount(1000, -10, 3);
         });
-    }//  не проверяет кридитный лимит на отрицательные значения
+    }
+
     @Test
     public void shouldTestCreditLimitPositive() {
         CreditAccount account = new CreditAccount(0, 500, 3);
+
         Assertions.assertEquals(500, account.getCreditLimit());
     }
+
     @Test
     public void shouldTestCreditLimitZero() {
         CreditAccount account = new CreditAccount(0, 0, 3);
+
         Assertions.assertEquals(0, account.getCreditLimit());
     }
+
     @Test
     public void shouldTestBalanceNegative() {
 
@@ -60,7 +73,7 @@ public class CreditAccountTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             CreditAccount account = new CreditAccount(-100, 500, 3);
         });
-    }//  не проверяет баланс на отрецательное значение
+    }
 
 
     @Test
@@ -69,7 +82,9 @@ public class CreditAccountTest {
         int expected = 0;
         int actual = account.getBalance();
         Assertions.assertEquals(expected, actual);
+
     }
+
     @Test
     public void shouldTestBalancePositive() {
         CreditAccount account = new CreditAccount(100, 500, 3);
@@ -77,6 +92,8 @@ public class CreditAccountTest {
         int actual = account.getBalance();
         Assertions.assertEquals(expected, actual);
     }
+
+
     @Test
     public void shouldTestPayPositive() {
         CreditAccount account = new CreditAccount(100, 200, 10);
@@ -85,6 +102,7 @@ public class CreditAccountTest {
         int actual = account.getBalance();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldTestPayPositiveLimitMin() {
         CreditAccount account = new CreditAccount(100, 200, 10);
@@ -93,6 +111,7 @@ public class CreditAccountTest {
         int actual = account.getBalance();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldTestPayPositiveLimitZero() {
         CreditAccount account = new CreditAccount(100, 200, 10);
@@ -101,71 +120,91 @@ public class CreditAccountTest {
         int actual = account.getBalance();
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldTestPayNegativeBalance() {
         CreditAccount account = new CreditAccount(100, 200, 10);
         account.pay(301);
-        int expected = -201;
+        int expected = 100;
         int actual = account.getBalance();
-        Assertions.assertEquals(expected, actual);//todo вычитает недоспустимую сумму с баланса
+        Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldTestPayNegativeAnswer() {
         CreditAccount account = new CreditAccount(100, 200, 10);
-        boolean expected = true;
+        boolean expected = false;
         boolean actual = account.pay(301);
         Assertions.assertEquals(expected, actual);
     }
     @Test
     public void shouldTestPayWrongParam() {
         CreditAccount account = new CreditAccount(100, 200, 10);
+
         boolean expected = false;
         boolean actual = account.pay(-100);
         Assertions.assertEquals(expected, actual);
+
+
     }
+
     @Test
     public void shouldTestPayWrongParamZero() {
         CreditAccount account = new CreditAccount(100, 200, 10);
+
         boolean expected = false;
         boolean actual = account.pay(0);
         Assertions.assertEquals(expected, actual);
+
     }
+
     @Test
     public void shouldTestAmountPositive() {
         CreditAccount account = new CreditAccount(100, 200, 10);
         account.add(200);
         int expected = 300;
         int actual = account.getBalance();
-        Assertions.assertEquals(expected, actual);// Неправильный подсчет добавления на счет(не добавляет а заменяет на бакланс)
+        Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldTestAmountZero() {
         CreditAccount account = new CreditAccount(100, 200, 10);
+
         boolean expected = false;
         boolean actual = account.add(0);
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldTestAmountNegative() {
         CreditAccount account = new CreditAccount(100, 200, 10);
+
         boolean expected = false;
         boolean actual = account.add(-10);
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void shouldTestYearChange() {
         CreditAccount account = new CreditAccount(100, 200, 10);
         int expected = 0;
         int actual = account.yearChange();
-        Assertions.assertEquals(expected, actual);// Непрвельный подсчет кредитной ставки/долга/процента при положительном балансе
+        Assertions.assertEquals(expected, actual);
+
+
     }
+
     @Test
     public void shouldTestYearChangeZero() {
         CreditAccount account = new CreditAccount(0, 200, 10);
         int expected = 0;
         int actual = account.yearChange();
         Assertions.assertEquals(expected, actual);
+
+
     }
+
     @Test
     public void shouldTestYearChangeNegative() {
         CreditAccount account = new CreditAccount(0, 200, 10);
@@ -173,13 +212,15 @@ public class CreditAccountTest {
         int expected = -10;
         int actual = account.yearChange();
         Assertions.assertEquals(expected, actual);
+
     }
+
     @Test
     public void shouldTestYearChangeDouble() {
         CreditAccount account = new CreditAccount(0, 200, 3);
         account.pay(75);
         int expected = -2;
         int actual = account.yearChange();
-        Assertions.assertEquals(expected, actual);// неправильно округляется сумма при делении баланса
+        Assertions.assertEquals(expected, actual);
     }
 }
