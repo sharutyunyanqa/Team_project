@@ -19,7 +19,6 @@ public class SavingAccountTest {
         Assertions.assertEquals(8_000, account.getBalance());
     }
 
-
     @Test
     public void shouldAddThanMaxBalance() {
         SavingAccount account = new SavingAccount(
@@ -47,6 +46,7 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(1_000 + 1_000, account.getBalance());
     }
+
     @Test
     public void shouldAddLessThanMaxBalanceTwo() {
         SavingAccount account = new SavingAccount(
@@ -74,7 +74,6 @@ public class SavingAccountTest {
         account.pay(1_000);
 
         Assertions.assertEquals(2_000 - 1_000, account.getBalance());
-
     }
 
     @Test
@@ -90,6 +89,7 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(2_000, account.getBalance());
     }
+
     @Test
     public void reduceBalanceAfterPayTwo() {
         SavingAccount account = new SavingAccount(
@@ -103,6 +103,7 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(9_000, account.getBalance());
     }
+
     @Test
     public void reduceBalanceAfterPayThree() {
         SavingAccount account = new SavingAccount(
@@ -116,7 +117,6 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(8_000, account.getBalance());
     }
-
 
 
     @Test
@@ -144,6 +144,7 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(1499, account.yearChange());
     }
+
     @Test
     public void percentBalanceRemainingThree() {
         SavingAccount account = new SavingAccount(
@@ -193,6 +194,7 @@ public class SavingAccountTest {
         });
     }
 }
+
 
 
 
